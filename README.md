@@ -346,6 +346,8 @@ Data Agent が生成した DAX クエリを確認してみましょう。
 
 ## 補足: Data Agent の評価（Evaluation）
 
+> 📖 公式ドキュメント: [データ エージェントを評価する - Microsoft Fabric | Microsoft Learn](https://learn.microsoft.com/ja-jp/fabric/data-science/evaluate-data-agent)
+
 `evaluation/` フォルダには、Data Agent の回答精度をプログラムで評価するためのファイルが含まれています。
 
 ### ファイル構成
