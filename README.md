@@ -289,7 +289,7 @@ salesテーブルとsales_reviewテーブルを使って、ユーザーの質問
 #### 質問 3: 年代別分析
 
 ```
-30代に人気の旅行先を上位3件教えてください。
+30代に人気の旅行先を上位5件教えてください。
 ```
 
 ---
@@ -456,10 +456,10 @@ ORDER BY trips DESC;
 
 ---
 
-### 質問 3: 30 代に人気の旅行先上位 3 件
+### 質問 3: 30 代に人気の旅行先上位 5 件
 
 ```sql
-SELECT TOP 3
+SELECT TOP 5
     Travel_destination,
     COUNT(*) AS trips
 FROM sales
