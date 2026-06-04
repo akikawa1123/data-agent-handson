@@ -342,6 +342,60 @@ Data Agent が生成した DAX クエリを確認してみましょう。
 4. ✅ **メタデータの設定** - テーブルとカラムに説明を追加して精度向上
 5. ✅ **自然言語での分析** - チャットで多様なビジネス質問に回答
 
+---
+
+## 補足: Data Agent の評価（Evaluation）
+
+`evaluation/` フォルダには、Data Agent の回答精度をプログラムで評価するためのファイルが含まれています。
+
+### ファイル構成
+
+| ファイル | 説明 |
+|---|---|
+| `evaluation_questions.csv` | 質問と期待される回答（グランドトゥルース） |
+| `evaluate_data_agent.ipynb` | 評価を実行する Fabric Notebook |
+
+### 手順
+
+#### 1. CSV ファイルを OneLake にアップロード
+
+1. Fabric の **TravelSalesLakehouse** を開く
+2. 左のエクスプローラーで **Files** を展開し、`data` フォルダを開く  
+   （存在しない場合は `data` フォルダを新規作成）
+3. **「アップロード」** をクリックし、`evaluation/evaluation_questions.csv` をアップロード
+
+> アップロード先のパス: `Files/data/evaluation_questions.csv`
+
+#### 2. Notebook を Fabric にインポート
+
+1. Fabric ワークスペースの **「新しいアイテム」→「ノートブックのインポート」** をクリック
+2. `evaluation/evaluate_data_agent.ipynb` を選択してインポート
+3. インポートされた Notebook を開く
+
+#### 3. Lakehouse をアタッチ
+
+1. Notebook 右側の **「Lakehouse を追加」** をクリック
+2. **TravelSalesLakehouse** を選択してアタッチ
+
+#### 4. Notebook を実行
+
+セルを上から順に実行します。
+
+| ステップ | 内容 |
+|---|---|
+| Step 1 | `fabric-data-agent-sdk` のインストール |
+| Step 2 | CSV ファイルの読み込み |
+| Step 3 | 評価の実行（全質問を Data Agent に送信） |
+| Step 4 | 評価サマリーの表示（合否・スコア） |
+| Step 5 | 評価詳細の表示（各質問の回答と期待値の比較） |
+
+> **注意:** Step 3 の実行には数分かかります。Data Agent が全質問に回答するまでお待ちください。
+
+#### 5. 結果の確認
+
+- **Step 4** でスコアの全体像（正答率など）が表示されます
+- **Step 5** で各質問ごとの回答内容と期待値を詳細比較できます
+
 ### Data Agent の精度を高めるコツ
 
 | コツ | 内容 |
